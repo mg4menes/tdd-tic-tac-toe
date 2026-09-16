@@ -51,3 +51,11 @@ TEST_CASE("Teste Coluna X") {
 
   REQUIRE(CriarVelha().VerificaVelha(teste) == 1);
 }
+
+TEST_CASE("Teste Linha O") {
+  int teste[3][3] = {{2, 2, 2},
+                      {0, 0, 0},
+                      {0, 0, 0}};
+
+  REQUIRE(CriarVelha().VerificaVelha(teste) == 2);
+}

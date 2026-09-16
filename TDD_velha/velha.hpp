@@ -13,6 +13,8 @@ class JogoVelha {
     JOGADOR_O = 2
   };
 
+  bool TemQuantidadeIncoerente(int velha[3][3]);
+
   int VerificaVencedor(int velha[3][3]);
 
   bool RestaPosicaoVazia(int velha[3][3]);

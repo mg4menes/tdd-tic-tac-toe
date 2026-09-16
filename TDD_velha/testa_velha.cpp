@@ -26,10 +26,11 @@
 // Teste (5): Testar se uma diagonal de X retorna 1 (X vencedor).
 // Teste (6): Testar se um empate retorna 0 (Jogo empatado).
 // Teste (7): Testar se o jogo incompleto retorna -1 (Jogo indefinido).
-// Teste (8): Testar se em um jogo com uma quantidade incoerente de jogadas retorna -2 (Jogo Impossivel).
-//   Exemplo do Teste (8): Jogo com 5 X's e 1 O.
-//   Observacao no Teste (8): Considerando a nova regra de verificacao de quantidade de jogadas,
-//   a entrada de alguns testes tiveram que ser alteradas.
+// Teste (8): Testar se em um jogo com uma quantidade
+// incoerente de jogadasretorna -2 (Jogo Impossivel).
+//   Teste (8) (Observacao): Considerando a nova regra de
+//   verificacao de quantidade de jogadas, a entrada
+//   de alguns testes tiveram que ser alteradas.
 
 JogoVelha CriarVelha() {
   JogoVelha velha;

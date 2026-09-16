@@ -20,13 +20,24 @@
 // -2: Impossível pelas regras.
 
 // Teste (1): Testar se o tabuleiro vazio retorna -1 (Jogo indefinido).
+// Teste (2): Testar se uma coluna de O retorna 2 (O vencedor).
 
 TEST_CASE("Teste Tabuleiro Vazio") {
   JogoVelha velha;
 
-  int teste1[3][3] = {{0, 0, 0},
+  int teste[3][3] = {{0, 0, 0},
                       {0, 0, 0},
                       {0, 0, 0}};
 
-  REQUIRE(velha.VerificaVelha(teste1) == -1);
+  REQUIRE(velha.VerificaVelha(teste) == -1);
+}
+
+TEST_CASE("Teste Coluna O") {
+  JogoVelha velha;
+
+  int teste[3][3] = {{2, 0, 0},
+                      {2, 0, 0},
+                      {2, 0, 0}};
+
+  REQUIRE(velha.VerificaVelha(teste) == 2);
 }

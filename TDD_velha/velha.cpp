@@ -19,6 +19,12 @@ int JogoVelha::VerificaVelha(int velha[3][3]) {
     return resultado;
   }
 
+  resultado = VerificaDiagonal(velha);
+
+  if (resultado == 1 || resultado == 2) {
+    return resultado;
+  }
+
   return -2;
 }
 
@@ -40,6 +46,22 @@ int JogoVelha::VerificaLinha(int velha[3][3]) {
       if (velha[lin][0] != 0) {
         return velha[lin][0];
       }
+    }
+  }
+
+  return -2;
+}
+
+int JogoVelha::VerificaDiagonal(int velha[3][3]) {
+  if (velha[0][0] == velha[1][1] && velha[1][1] == velha[2][2]) {
+    if (velha[1][1] != 0) {
+      return velha[1][1];
+    }
+  }
+
+  if (velha[0][2] == velha[1][1] && velha[1][1] == velha[2][0]) {
+    if (velha[1][1] != 0) {
+      return velha[1][1];
     }
   }
 

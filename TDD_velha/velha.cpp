@@ -7,20 +7,19 @@ int JogoVelha::VerificaVelha(int velha[3][3]) {
     return -1;
   }
 
-  int vencedor;
-  int resultado;
+  int resultado = VerificaColuna(velha);
 
-  resultado = VerificaColuna(velha);
   if (resultado == 1 || resultado == 2) {
-    vencedor = resultado;
+      return resultado;
   }
 
   resultado = VerificaLinha(velha);
+
   if (resultado == 1 || resultado == 2) {
-    vencedor = resultado;
+    return resultado;
   }
 
-  return vencedor;
+  return -2;
 }
 
 int JogoVelha::VerificaColuna(int velha[3][3]) {

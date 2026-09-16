@@ -22,6 +22,7 @@
 // Teste (1): Testar se o tabuleiro vazio retorna -1 (Jogo indefinido).
 // Teste (2): Testar se uma coluna de O retorna 2 (O vencedor).
 // Teste (3): Testar se uma coluna de X retorna 1 (X vencedor).
+// Teste (4): Testar se uma linha de O retorna 2 (O vencedor).
 
 JogoVelha CriarVelha() {
   JogoVelha velha;

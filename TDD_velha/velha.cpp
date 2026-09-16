@@ -14,8 +14,13 @@ int JogoVelha::VerificaColuna(int velha[3][3]) {
   for (int col = 0; col < 3; col++) {
     // 3 bolas em uma coluna
     if (velha[0][col] == velha[1][col] && velha[1][col] == velha[2][col]) {
-      if (velha[0][col] == 2) {
-        return 2;
+      if (velha[0][col] != 0) {
+        if (velha[0][col] == 2) {
+          return 2;
+        }
+        if (velha[0][col] == 1) {
+          return 1;
+        }
       }
     }
   }

@@ -27,7 +27,9 @@
 // Teste (6): Testar se um empate retorna 0 (Jogo empatado).
 // Teste (7): Testar se o jogo incompleto retorna -1 (Jogo indefinido).
 // Teste (8): Testar se em um jogo com uma quantidade incoerente de jogadas retorna -2 (Jogo Impossivel).
-// Exemplo do Teste (8): Jogo com 5 X's e 1 O.
+//   Exemplo do Teste (8): Jogo com 5 X's e 1 O.
+//   Observacao no Teste (8): Considerando a nova regra de verificacao de quantidade de jogadas,
+//   a entrada de alguns testes tiveram que ser alteradas.
 
 JogoVelha CriarVelha() {
   JogoVelha velha;
@@ -44,15 +46,15 @@ TEST_CASE("Teste Tabuleiro Vazio") {
 
 TEST_CASE("Teste Coluna O") {
   int teste[3][3] = {{2, 0, 0},
-                      {2, 0, 0},
-                      {2, 0, 0}};
+                      {2, 1, 0},
+                      {2, 0, 1}};
 
   REQUIRE(CriarVelha().VerificaVelha(teste) == 2);
 }
 
 TEST_CASE("Teste Coluna X") {
-  int teste[3][3] = {{1, 0, 0},
-                      {1, 0, 0},
+  int teste[3][3] = {{1, 2, 2},
+                      {1, 2, 0},
                       {1, 0, 0}};
 
   REQUIRE(CriarVelha().VerificaVelha(teste) == 1);
@@ -60,15 +62,15 @@ TEST_CASE("Teste Coluna X") {
 
 TEST_CASE("Teste Linha O") {
   int teste[3][3] = {{2, 2, 2},
-                      {0, 0, 0},
-                      {0, 0, 0}};
+                      {0, 1, 0},
+                      {1, 0, 0}};
 
   REQUIRE(CriarVelha().VerificaVelha(teste) == 2);
 }
 
 TEST_CASE("Teste Diagonal X") {
-  int teste[3][3] = {{1, 0, 0},
-                      {0, 1, 0},
+  int teste[3][3] = {{1, 0, 2},
+                      {0, 1, 2},
                       {0, 0, 1}};
 
   REQUIRE(CriarVelha().VerificaVelha(teste) == 1);

@@ -3,6 +3,23 @@
 #include "velha.hpp"  // NOLINT(build/include_subdir)
 
 int JogoVelha::VerificaVelha(int velha[3][3]) {
+  int quantidade_x = 0;
+  int quantidade_o = 0;
+  for (int lin = 0; lin < 3; lin++) {
+    for (int col = 0; col < 3; col++) {
+      if (velha[lin][col] == 1) {
+        quantidade_x += 1;
+      }
+      if (velha[lin][col] == 2) {
+        quantidade_o += 1;
+      }
+    }
+  }
+
+  if ((quantidade_x > quantidade_o + 1) || (quantidade_o > quantidade_x + 1)) {
+    return IMPOSSIVEL;
+  }
+
   int jogador_vencedor = VerificaVencedor(velha);
 
   if (jogador_vencedor == JOGADOR_X || jogador_vencedor == JOGADOR_O) {

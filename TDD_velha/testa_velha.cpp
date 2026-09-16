@@ -23,32 +23,31 @@
 // Teste (2): Testar se uma coluna de O retorna 2 (O vencedor).
 // Teste (3): Testar se uma coluna de X retorna 1 (X vencedor).
 
-TEST_CASE("Teste Tabuleiro Vazio") {
+JogoVelha CriarVelha() {
   JogoVelha velha;
+  return velha;
+}
 
+TEST_CASE("Teste Tabuleiro Vazio") {
   int teste[3][3] = {{0, 0, 0},
                       {0, 0, 0},
                       {0, 0, 0}};
 
-  REQUIRE(velha.VerificaVelha(teste) == -1);
+  REQUIRE(CriarVelha().VerificaVelha(teste) == -1);
 }
 
 TEST_CASE("Teste Coluna O") {
-  JogoVelha velha;
-
   int teste[3][3] = {{2, 0, 0},
                       {2, 0, 0},
                       {2, 0, 0}};
 
-  REQUIRE(velha.VerificaVelha(teste) == 2);
+  REQUIRE(CriarVelha().VerificaVelha(teste) == 2);
 }
 
 TEST_CASE("Teste Coluna X") {
-  JogoVelha velha;
-
   int teste[3][3] = {{1, 0, 0},
                       {1, 0, 0},
                       {1, 0, 0}};
 
-  REQUIRE(velha.VerificaVelha(teste) == 1);
+  REQUIRE(CriarVelha().VerificaVelha(teste) == 1);
 }

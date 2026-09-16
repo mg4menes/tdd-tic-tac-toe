@@ -3,10 +3,20 @@
 #include "velha.hpp"  // NOLINT(build/include_subdir)
 
 int JogoVelha::VerificaVelha(int velha[3][3]) {
-  if (VerificaVazio(velha)) {
+  int jogador_vencedor = VerificaVencedor(velha);
+
+  if (jogador_vencedor == JOGADOR_X || jogador_vencedor == JOGADOR_O) {
+    return jogador_vencedor;
+  }
+
+  if (RestaPosicaoVazia(velha)) {
     return INDEFINIDO;
   }
 
+  return EMPATE;
+}
+
+int JogoVelha::VerificaVencedor(int velha[3][3]) {
   int resultado = VerificaColuna(velha);
   if (TemVencedor(resultado)) {
     return resultado;
@@ -22,15 +32,7 @@ int JogoVelha::VerificaVelha(int velha[3][3]) {
     return resultado;
   }
 
-  for (int lin = 0; lin < 3; lin++) {
-    for (int col = 0; col < 3; col++) {
-      if (velha[lin][col] == 0) {
-        return INDEFINIDO;
-      }
-    }
-  }
-
-  return EMPATE;
+  return INDEFINIDO;
 }
 
 bool JogoVelha::TemVencedor(int resultado) {
@@ -72,14 +74,13 @@ int JogoVelha::VerificaDiagonal(int velha[3][3]) {
   return -2;
 }
 
-bool JogoVelha::VerificaVazio(int velha[3][3]) {
+bool JogoVelha::RestaPosicaoVazia(int velha[3][3]) {
   for (int lin = 0; lin < 3; lin++) {
     for (int col = 0; col < 3; col++) {
-      if (velha[lin][col] != 0) {
-        return false;
+      if (velha[lin][col] == 0) {
+        return true;
       }
     }
   }
-
-  return true;
+  return false;
 }

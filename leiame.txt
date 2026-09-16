@@ -1,0 +1,3 @@
+Jogo da Velha desenvolvido utilizando desenvolvimento orientado a testes (TDD).
+
+Digite "make all" no diretório TDD_velha para compilar o programa. Caso queira apenas verificar os testes, digite "make test".

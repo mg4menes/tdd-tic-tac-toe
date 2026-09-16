@@ -13,7 +13,9 @@ class JogoVelha {
     JOGADOR_O = 2
   };
 
-  bool VerificaVazio(int velha[3][3]);
+  int VerificaVencedor(int velha[3][3]);
+
+  bool RestaPosicaoVazia(int velha[3][3]);
 
   int VerificaLinha(int velha[3][3]);
 

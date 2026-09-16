@@ -26,6 +26,8 @@
 // Teste (5): Testar se uma diagonal de X retorna 1 (X vencedor).
 // Teste (6): Testar se um empate retorna 0 (Jogo empatado).
 // Teste (7): Testar se o jogo incompleto retorna -1 (Jogo indefinido).
+// Teste (8): Testar se em um jogo com uma quantidade incoerente de jogadas retorna -2 (Jogo Impossivel).
+// Exemplo do Teste (8): Jogo com 5 X's e 1 O.
 
 JogoVelha CriarVelha() {
   JogoVelha velha;
@@ -86,4 +88,12 @@ TEST_CASE("Teste Jogo Incompleto") {
                       {0, 2, 2}};
 
   REQUIRE(CriarVelha().VerificaVelha(teste) == -1);
+}
+
+TEST_CASE("Teste Quantidade Impossivel de Jogadas") {
+  int teste[3][3] = {{1, 1, 2},
+                      {1, 0, 1},
+                      {0, 0, 1}};
+
+  REQUIRE(CriarVelha().VerificaVelha(teste) == -2);
 }

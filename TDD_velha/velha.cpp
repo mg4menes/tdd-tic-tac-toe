@@ -22,7 +22,7 @@ int JogoVelha::VerificaVelha(int velha[3][3]) {
     return resultado;
   }
 
-  return resultado;
+  return 0; // Empate
 }
 
 int JogoVelha::TemVencedor(int resultado) {

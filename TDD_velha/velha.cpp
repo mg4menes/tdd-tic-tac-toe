@@ -22,6 +22,14 @@ int JogoVelha::VerificaVelha(int velha[3][3]) {
     return resultado;
   }
 
+  for (int lin = 0; lin < 3; lin++) {
+    for (int col = 0; col < 3; col++) {
+      if (velha[lin][col] == 0) {
+        return INDEFINIDO;
+      }
+    }
+  }
+
   return EMPATE;
 }
 

@@ -13,6 +13,8 @@ class JogoVelha {
 
   int VerificaDiagonal(int velha[3][3]);
 
+  int TemVencedor(int resultado);
+
   int VerificaVelha(int velha[3][3]);
 };
 

@@ -5,6 +5,14 @@
 
 class JogoVelha {
  public:
+  enum Resultado {
+    IMPOSSIVEL = -2,
+    INDEFINIDO = -1,
+    EMPATE = 0,
+    JOGADOR_X = 1,
+    JOGADOR_O = 2
+  };
+
   bool VerificaVazio(int velha[3][3]);
 
   int VerificaLinha(int velha[3][3]);
@@ -13,7 +21,7 @@ class JogoVelha {
 
   int VerificaDiagonal(int velha[3][3]);
 
-  int TemVencedor(int resultado);
+  bool TemVencedor(int resultado);
 
   int VerificaVelha(int velha[3][3]);
 };

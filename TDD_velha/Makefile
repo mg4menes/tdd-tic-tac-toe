@@ -1,7 +1,7 @@
 all: testa_velha.cpp   velha.cpp velha.hpp velha.o
 	g++ -std=c++11 -Wall velha.o testa_velha.cpp -o testa_velha
 	./testa_velha
-	#use comentario se necessario
+	#Teste (1): Testar se o tabuleiro vazio retorna -1 (Jogo indefinido): PASSOU NO TESTE
 
 compile: testa_velha.cpp   velha.cpp velha.hpp velha.o
 	g++ -std=c++11 -Wall velha.o testa_velha.cpp -o testa_velha

@@ -24,7 +24,8 @@
 // Teste (3): Testar se uma coluna de X retorna 1 (X vencedor).
 // Teste (4): Testar se uma linha de O retorna 2 (O vencedor).
 // Teste (5): Testar se uma diagonal de X retorna 1 (X vencedor).
-// Teste (6): Testar se um empate retorna 0.
+// Teste (6): Testar se um empate retorna 0 (Jogo empatado).
+// Teste (7): Testar se o jogo incompleto retorna -1 (Jogo indefinido).
 
 JogoVelha CriarVelha() {
   JogoVelha velha;
@@ -77,4 +78,12 @@ TEST_CASE("Teste Empate") {
                       {1, 2, 2}};
 
   REQUIRE(CriarVelha().VerificaVelha(teste) == 0);
+}
+
+TEST_CASE("Teste Jogo Incompleto") {
+  int teste[3][3] = {{0, 1, 0},
+                      {0, 0, 1},
+                      {0, 2, 2}};
+
+  REQUIRE(CriarVelha().VerificaVelha(teste) == -1);
 }

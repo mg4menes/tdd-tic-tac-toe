@@ -23,6 +23,7 @@
 // Teste (2): Testar se uma coluna de O retorna 2 (O vencedor).
 // Teste (3): Testar se uma coluna de X retorna 1 (X vencedor).
 // Teste (4): Testar se uma linha de O retorna 2 (O vencedor).
+// Teste (5): Testar se uma diagonal de X retorna 1 (X vencedor).
 
 JogoVelha CriarVelha() {
   JogoVelha velha;
@@ -59,4 +60,12 @@ TEST_CASE("Teste Linha O") {
                       {0, 0, 0}};
 
   REQUIRE(CriarVelha().VerificaVelha(teste) == 2);
+}
+
+TEST_CASE("Teste Diagonal X") {
+  int teste[3][3] = {{1, 0, 0},
+                      {0, 1, 0},
+                      {0, 0, 1}};
+
+  REQUIRE(CriarVelha().VerificaVelha(teste) == 1);
 }

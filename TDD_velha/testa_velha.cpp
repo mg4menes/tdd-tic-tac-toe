@@ -1,24 +1,32 @@
-#include "velha.hpp"
+// Copyright 2026 Marcello da Silva Mangueira
+
+#include "velha.hpp"  // NOLINT(build/include_subdir)
 
 #define CATCH_CONFIG_NO_POSIX_SIGNALS
 #define CATCH_CONFIG_MAIN
-#include "catch.hpp"
+#include "catch.hpp"  // NOLINT(build/include_subdir)
 
-//Comportamento esperado do jogo:
+// Aviso:
 //
-// 1: X venceu
-// 2: O venceu
-// 0: Empate
-// -1: Indefinido
-// -2: Impossível pelas regras++
+// NOLINT(build/include_subdir) foi utilizado porque não foi possível incluir
+// o diretório do arquivo sem alterar a organização dos arquivos do projeto.
 
-//Teste (1): Testar se o tabuleiro vazio retorna -1 (Jogo indefinido)
+// Comportamento esperado do jogo:
+//
+// 1: X venceu.
+// 2: O venceu.
+// 0: Empate.
+// -1: Indefinido.
+// -2: Impossível pelas regras.
+
+// Teste (1): Testar se o tabuleiro vazio retorna -1 (Jogo indefinido).
 
 TEST_CASE("Teste Tabuleiro Vazio") {
-	int teste1[3][3] = {{0, 0, 0 }, 
-						{ 0, 0, 0 },
-						{ 0, 0, 0 }};
+  JogoVelha velha;
 
-    REQUIRE(VerificaVelha(teste1) == -1);
-} 
- 
+  int teste1[3][3] = {{0, 0, 0},
+                      {0, 0, 0},
+                      {0, 0, 0}};
+
+  REQUIRE(velha.VerificaVelha(teste1) == -1);
+}

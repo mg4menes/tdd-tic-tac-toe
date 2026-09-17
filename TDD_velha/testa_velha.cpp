@@ -27,10 +27,11 @@
 // Teste (6): Testar se um empate retorna 0 (Jogo empatado).
 // Teste (7): Testar se o jogo incompleto retorna -1 (Jogo indefinido).
 // Teste (8): Testar se em um jogo com uma quantidade
-// incoerente de jogadasretorna -2 (Jogo Impossivel).
+// incoerente de jogadasretorna -2 (Impossivel).
 //   Teste (8) (Observacao): Considerando a nova regra de
 //   verificacao de quantidade de jogadas, a entrada
 //   de alguns testes tiveram que ser alteradas.
+// Teste (9): Testar se 2 os vencedores simultaneos retorna -2 (Impossivel).
 
 JogoVelha CriarVelha() {
   JogoVelha velha;
@@ -100,3 +101,12 @@ TEST_CASE("Teste Quantidade Impossivel de Jogadas") {
 
   REQUIRE(CriarVelha().VerificaVelha(teste) == -2);
 }
+
+TEST_CASE("Teste 2 Vencedores Simultaneos") {
+  int teste[3][3] = {{1, 2, 0},
+                      {1, 2, 0},
+                      {1, 2, 0}};
+
+  REQUIRE(CriarVelha().VerificaVelha(teste) == -2);
+}
+

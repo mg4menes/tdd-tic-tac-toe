@@ -9,6 +9,10 @@ int JogoVelha::VerificaVelha(int velha[3][3]) {
 
   int jogador_vencedor = VerificaVencedor(velha);
 
+  if (vitorias_detectadas > 1) {
+    return IMPOSSIVEL;
+  }
+
   if (jogador_vencedor == JOGADOR_X || jogador_vencedor == JOGADOR_O) {
     return jogador_vencedor;
   }
@@ -38,6 +42,8 @@ bool JogoVelha::TemQuantidadeIncoerente(int velha[3][3]) {
 }
 
 int JogoVelha::VerificaVencedor(int velha[3][3]) {
+  vitorias_detectadas = 0;
+  
   int resultado = VerificaColuna(velha);
   if (TemVencedor(resultado)) {
     return resultado;
@@ -61,38 +67,47 @@ bool JogoVelha::TemVencedor(int resultado) {
 }
 
 int JogoVelha::VerificaColuna(int velha[3][3]) {
+  int vitorioso;
+
   for (int col = 0; col < 3; col++) {
     if (velha[0][col] == velha[1][col] &&
         velha[1][col] == velha[2][col] &&
         velha[0][col] != 0) {
-        return velha[0][col];
+        vitorioso = velha[0][col];
+        vitorias_detectadas += 1;
     }
   }
 
-  return -2;
+  return vitorioso;
 }
 
 int JogoVelha::VerificaLinha(int velha[3][3]) {
+  int vitorioso;
+
   for (int lin = 0; lin < 3; lin++) {
     if (velha[lin][0] == velha[lin][1] &&
         velha[lin][1] == velha[lin][2] &&
         velha[lin][0] != 0) {
-        return velha[lin][0];
+        vitorioso = velha[lin][0];
+        vitorias_detectadas += 1;
     }
   }
 
-  return -2;
+  return vitorioso;
 }
 
 int JogoVelha::VerificaDiagonal(int velha[3][3]) {
+  int vitorioso;
+
   if ((velha[0][0] == velha[1][1] && velha[1][1] == velha[2][2]) ||
       (velha[0][2] == velha[1][1] && velha[1][1] == velha[2][0])) {
         if (velha[1][1] != 0) {
-          return velha[1][1];
+          vitorioso = velha[1][1];
+          vitorias_detectadas += 1;
         }
   }
 
-  return -2;
+  return vitorioso;
 }
 
 bool JogoVelha::RestaPosicaoVazia(int velha[3][3]) {

@@ -5,6 +5,8 @@
 
 class JogoVelha {
  public:
+  int vitorias_detectadas = 0;
+
   enum Resultado {
     IMPOSSIVEL = -2,
     INDEFINIDO = -1,

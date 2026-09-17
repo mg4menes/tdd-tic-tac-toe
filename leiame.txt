@@ -1,3 +1,12 @@
+Nome: Marcello da Silva Mangueira
+
 Jogo da Velha desenvolvido utilizando desenvolvimento orientado a testes (TDD).
 
-Digite "make all" no diretório TDD_velha para compilar o programa. Caso queira apenas verificar os testes, digite "make test".
+Para compilar o programa:
+- Digite "make all" no diretório TDD_velha.
+
+Para realizar os testes:
+- Digite "make test" no diretório TDD_velha.
+
+Foi utilizado o cpplint, gcov, cppcheck e valgrind no desenvolvimento do programa.
+Para o TDD, foi usado o catch.

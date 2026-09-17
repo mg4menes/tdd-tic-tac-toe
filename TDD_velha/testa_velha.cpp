@@ -109,4 +109,3 @@ TEST_CASE("Teste 2 Vencedores Simultaneos") {
 
   REQUIRE(CriarVelha().VerificaVelha(teste) == -2);
 }
-

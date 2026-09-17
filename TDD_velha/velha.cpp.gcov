@@ -1,0 +1,125 @@
+        -:    0:Source:velha.cpp
+        -:    1:// Copyright 2026 Marcello da Silva Mangueira
+        -:    2:
+        -:    3:#include "velha.hpp"  // NOLINT(build/include_subdir)
+        -:    4:
+        9:    5:int JogoVelha::VerificaVelha(int velha[3][3]) {
+        9:    6:  if (TemQuantidadeIncoerente(velha)) {
+        1:    7:    return IMPOSSIVEL;
+        -:    8:  }
+        -:    9:
+        8:   10:  int jogador_vencedor = VerificaVencedor(velha);
+        -:   11:
+        8:   12:  if (vitorias_linhas > 1 || vitorias_colunas > 1) {
+        1:   13:    return IMPOSSIVEL;
+        -:   14:  }
+        -:   15:
+        7:   16:  if (jogador_vencedor == JOGADOR_X || jogador_vencedor == JOGADOR_O) {
+        4:   17:    return jogador_vencedor;
+        -:   18:  }
+        -:   19:
+        3:   20:  if (RestaPosicaoVazia(velha)) {
+        2:   21:    return INDEFINIDO;
+        -:   22:  }
+        -:   23:
+        1:   24:  return EMPATE;
+        -:   25:}
+        -:   26:
+        9:   27:bool JogoVelha::TemQuantidadeIncoerente(int velha[3][3]) {
+        9:   28:  int quantidade_x = 0;
+        9:   29:  int quantidade_o = 0;
+        -:   30:
+       36:   31:  for (int lin = 0; lin < 3; lin++) {
+      108:   32:    for (int col = 0; col < 3; col++) {
+       81:   33:      if (velha[lin][col] == JOGADOR_X) {
+       25:   34:        quantidade_x += 1;
+       56:   35:      } else if (velha[lin][col] == JOGADOR_O) {
+       21:   36:        quantidade_o += 1;
+        -:   37:      }
+        -:   38:    }
+        -:   39:  }
+        -:   40:
+        9:   41:  return (quantidade_x > quantidade_o + 1) || (quantidade_o > quantidade_x + 1);
+        -:   42:}
+        -:   43:
+        8:   44:int JogoVelha::VerificaVencedor(int velha[3][3]) {
+        8:   45:  vitorias_linhas = 0;
+        8:   46:  vitorias_colunas = 0;
+        -:   47:
+        8:   48:  int vencedor = INDEFINIDO;
+        -:   49:
+        8:   50:  int resultado = VerificaColuna(velha);
+        8:   51:  if (TemVencedor(resultado)) {
+        3:   52:    vencedor = resultado;
+        -:   53:  }
+        -:   54:
+        8:   55:  resultado = VerificaLinha(velha);
+        8:   56:  if (TemVencedor(resultado)) {
+        1:   57:    vencedor = resultado;
+        -:   58:  }
+        -:   59:
+        8:   60:  resultado = VerificaDiagonal(velha);
+        8:   61:  if (TemVencedor(resultado)) {
+        1:   62:    vencedor = resultado;
+        -:   63:  }
+        -:   64:
+        8:   65:  return vencedor;
+        -:   66:}
+        -:   67:
+        8:   68:int JogoVelha::VerificaColuna(int velha[3][3]) {
+        8:   69:  int vitorioso = INDEFINIDO;
+        -:   70:
+       32:   71:  for (int col = 0; col < 3; col++) {
+       24:   72:    if (velha[0][col] == velha[1][col] &&
+       13:   73:        velha[1][col] == velha[2][col] &&
+        9:   74:        velha[0][col] != 0) {
+        4:   75:        vitorioso = velha[0][col];
+        4:   76:        vitorias_colunas += 1;
+        -:   77:    }
+        -:   78:  }
+        -:   79:
+        8:   80:  return vitorioso;
+        -:   81:}
+        -:   82:
+        8:   83:int JogoVelha::VerificaLinha(int velha[3][3]) {
+        8:   84:  int vitorioso = INDEFINIDO;
+        -:   85:
+       32:   86:  for (int lin = 0; lin < 3; lin++) {
+       24:   87:    if (velha[lin][0] == velha[lin][1] &&
+        7:   88:        velha[lin][1] == velha[lin][2] &&
+        4:   89:        velha[lin][0] != 0) {
+        1:   90:        vitorioso = velha[lin][0];
+        1:   91:        vitorias_linhas += 1;
+        -:   92:    }
+        -:   93:  }
+        -:   94:
+        8:   95:  return vitorioso;
+        -:   96:}
+        -:   97:
+        8:   98:int JogoVelha::VerificaDiagonal(int velha[3][3]) {
+        8:   99:  int vitorioso = INDEFINIDO;
+        -:  100:
+        8:  101:  if ((velha[0][0] == velha[1][1] && velha[1][1] == velha[2][2]) ||
+        6:  102:      (velha[0][2] == velha[1][1] && velha[1][1] == velha[2][0])) {
+        3:  103:        if (velha[1][1] != 0) {
+        1:  104:          vitorioso = velha[1][1];
+        -:  105:        }
+        -:  106:  }
+        -:  107:
+        8:  108:  return vitorioso;
+        -:  109:}
+        -:  110:
+       24:  111:bool JogoVelha::TemVencedor(int resultado) {
+       24:  112:  return (resultado == JOGADOR_X || resultado == JOGADOR_O);
+        -:  113:}
+        -:  114:
+        3:  115:bool JogoVelha::RestaPosicaoVazia(int velha[3][3]) {
+        6:  116:  for (int lin = 0; lin < 3; lin++) {
+       14:  117:    for (int col = 0; col < 3; col++) {
+       11:  118:      if (velha[lin][col] == 0) {
+        2:  119:        return true;
+        -:  120:      }
+        -:  121:    }
+        -:  122:  }
+        1:  123:  return false;
+        -:  124:}

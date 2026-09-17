@@ -5,7 +5,8 @@
 
 class JogoVelha {
  public:
-  int vitorias_detectadas = 0;
+  int vitorias_linhas = 0;
+  int vitorias_colunas = 0;
 
   enum Resultado {
     IMPOSSIVEL = -2,
@@ -15,21 +16,21 @@ class JogoVelha {
     JOGADOR_O = 2
   };
 
+  int VerificaVelha(int velha[3][3]);
+
   bool TemQuantidadeIncoerente(int velha[3][3]);
 
   int VerificaVencedor(int velha[3][3]);
 
-  bool RestaPosicaoVazia(int velha[3][3]);
+  int VerificaColuna(int velha[3][3]);
 
   int VerificaLinha(int velha[3][3]);
-
-  int VerificaColuna(int velha[3][3]);
 
   int VerificaDiagonal(int velha[3][3]);
 
   bool TemVencedor(int resultado);
 
-  int VerificaVelha(int velha[3][3]);
+  bool RestaPosicaoVazia(int velha[3][3]);
 };
 
 #endif  // TDD_VELHA_VELHA_HPP_
